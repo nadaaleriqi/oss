@@ -23,6 +23,8 @@ public class Person
 		_age=age;
 		}
 	}
+	public int Getage() => _age;
+	
 	public Person(string name,int age){
 		Name=name;
 		Age=age;
@@ -166,8 +168,7 @@ public class nada{
 		                          database.AddStudent(student);
 					 }
 					 catch(Exception e)
-					 {
-						 Console.WriteLine(e.Message);
+					 {Console.WriteLine(e.Message);
 					 }
 					break;
 				case 2:	
@@ -184,8 +185,7 @@ public class nada{
 		                        database.AddStaff(staff);
 					 }
 					 catch(Exception e)
-					 {
-						 Console.WriteLine(e.Message);
+					 {Console.WriteLine(e.Message);
 					 }
 					
 	                                  
@@ -201,8 +201,7 @@ public class nada{
 					database.AddPerson(person);
 					 }
 					 catch(Exception e)
-					 {
-						 Console.WriteLine(e.Message);
+					 {Console.WriteLine(e.Message);
 					 }
 				
 					
