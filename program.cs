@@ -1,4 +1,3 @@
-
 using System;
 namespace nada;
 public class Person
@@ -7,20 +6,20 @@ public class Person
 	public string Name{
 		get{return _name;}
 		set{
-            if(name == null || name== "" || name.Lenght >=32){
+            if(value == null || value== "" || value.Length >=32){
 			throw new Exception ("InValid Name");	
 		}
-		_name=name;
+		_name=value;
 		}
 	}
 	private int _age;
 	public int Age{
 		get{return _age;}
 		set{
-            if(year<=0 || year>128){
+            if(value<=0 || value>128){
 			throw new Exception ("InValid Age");	
 		}
-		_age=age;
+		_age=value;
 		}
 	}
 	public int Getage() => _age;
@@ -40,10 +39,10 @@ public class Student : Person
 	   public int Year{
 		get{return _year;}
 		set{
-            if(year<1 || year>5){
+            if(value<1 || value>5){
 			throw new Exception ("InValid Year");	
 		}
-		_year=year;
+		_year=value;
 		}
 	   }
 
@@ -51,10 +50,10 @@ public class Student : Person
 	public float Gpa{
 		get{return _gpa;}
 		set{
-             if(gpa<0 && gpa>4){
+             if(value<0 && value>4){
 			throw new Exception ("InValid  Gpa");	
 		}
-		_gpa=gpa;
+		_gpa=value;
 		}
 	}
 
@@ -78,10 +77,10 @@ public class Student : Person
 			return _salary;
 		 }
 		 set{
-			if(salary<0 || salary>120000){
+			if(value < 0 || value > 120000){
 				throw new Exception ("InValid Year");	
-		}
-		_salary=salary;
+		  }
+		  _salary=value;
 		 }
 	}
 	private int _joinyear;
@@ -90,11 +89,10 @@ public class Student : Person
 			return _joinyear;
 		 }
 		 set{
-			var res=2022-Age;
-			if(joinyear <= (2022 -res)){
-				throw new Exception ("InValid Gpa");	
+			if( (value - Age )< 21){
+				throw new Exception ("InValid join year");	
 		}
-		_joinyear=joinyear;
+		_joinyear=value;
 		 }
 	}
 
@@ -124,26 +122,32 @@ public class Database{
       People[_index++] = person;
  }
 
- public void printAll()
+ public void PrintAll()
  {
  for(int i=0;i<=_index;i++){
- People[i].Print;
+ People[i].Print();
  }
  }}
 public class nada{
 	public static void Main()
 	{
 		var database= new Database();
-		string name= Console.ReadLine();
-		int age= Convert.ToInt32(Console.ReadLine());
-		int year= Convert.ToInt32(Console.ReadLine());
-		int gpa= Convert.ToSingle(Console.ReadLine());
+    		Console.WriteLine("Name: ");
+		var name= Console.ReadLine();
+    		Console.WriteLine("Age: ");
+		var age= Convert.ToInt32(Console.ReadLine());
+    		Console.WriteLine("Year: ");
+		var year= Convert.ToInt32(Console.ReadLine());
+    		Console.WriteLine("Gpa: ");
+		var gpa= Convert.ToSingle(Console.ReadLine());
 		
 		var student=new Student(name,age,year,gpa);
 		database.AddStudent(student);
 		
 		////staff
+    		Console.WriteLine("Salary: ");
 		double salary= Convert.ToDouble(Console.ReadLine());
+    		Console.WriteLine("JoinYear: ");
 		int joinyear= Convert.ToInt32(Console.ReadLine());
 		
 	     var staff=new Staff(name,age,salary,joinyear);
@@ -156,16 +160,16 @@ public class nada{
 			switch(option){
 				case 1:
 					Console.WriteLine("Name: ");
-					var name1=Console.WriteLine();
+					var name1=Console.ReadLine();
 					Console.WriteLine("Age: ");
 					var age1=Convert.ToInt32(Console.ReadLine());
 					Console.WriteLine("Year: ");
-					var year= Convert.ToInt32(Console.ReadLine());
+					var year1= Convert.ToInt32(Console.ReadLine());
 					Console.WriteLine("Gpa: ");
-					var gpa= Convert.ToSingle(Console.ReadLine());
+					var gpa1= Convert.ToSingle(Console.ReadLine());
 					 try{
-					var student=new Student(name1,age1,year,gpa);
-		                          database.AddStudent(student);
+					var student1=new Student(name1,age1,year1,gpa1);
+		                          database.AddStudent(student1);
 					 }
 					 catch(Exception e)
 					 {Console.WriteLine(e.Message);
@@ -177,12 +181,12 @@ public class nada{
 					Console.WriteLine("Age: ");
 					var age2=Convert.ToInt32(Console.ReadLine());
 					Console.WriteLine("Salary: ");
-					var salary= Convert.ToDouble(Console.ReadLine());
+					var salary2= Convert.ToDouble(Console.ReadLine());
 					Console.WriteLine("JoinYear: ");
-					var joinyear= Convert.ToInt32(Console.ReadLine());
+					var joinyear2= Convert.ToInt32(Console.ReadLine());
 			         try{
-					var staff=new Staff(name2,age2,salary,joinyear);
-		                        database.AddStaff(staff);
+					var staff2=new Staff(name2,age2,salary2,joinyear2);
+		                        database.AddStaff(staff2);
 					 }
 					 catch(Exception e)
 					 {Console.WriteLine(e.Message);
